@@ -1,0 +1,108 @@
+IRS Publication 502 - Medical and Dental Expenses
+
+MEDICAL EXPENSE DEDUCTION
+
+You can deduct qualified medical and dental expenses that exceed 7.5% of your adjusted gross income (AGI). This is an itemized deduction claimed on Schedule A.
+
+Example Calculation:
+- AGI: $50,000
+- 7.5% threshold: $3,750
+- Total medical expenses: $5,000
+- Deductible amount: $1,250 ($5,000 - $3,750)
+
+QUALIFIED MEDICAL EXPENSES
+
+Expenses must be primarily for the prevention, diagnosis, treatment, or cure of disease, or for treatments affecting any part or function of the body.
+
+Medical Services:
+- Doctors, dentists, surgeons, and specialists
+- Hospital services and nursing care
+- Laboratory fees and diagnostic tests
+- X-rays and imaging
+- Physical therapy and rehabilitation
+- Mental health treatment and counseling
+- Substance abuse treatment
+
+Prescription Items:
+- Prescription medications
+- Insulin (even without prescription)
+- Prescription eyeglasses and contact lenses
+- Hearing aids and batteries
+- Prosthetic devices
+
+Medical Equipment:
+- Wheelchairs and walkers
+- Crutches
+- Oxygen equipment
+- Hospital beds for medical use
+- Blood sugar test kits
+
+Other Qualified Expenses:
+- Health insurance premiums (if not pre-tax)
+- Long-term care insurance premiums (age-based limits)
+- Medicare Part B and Part D premiums
+- Medigap insurance premiums
+- COBRA premiums
+- Dental treatment and orthodontia
+- Vision correction surgery (LASIK)
+- Fertility treatments
+- Weight loss programs (if prescribed for specific disease)
+- Service animals
+
+TRANSPORTATION FOR MEDICAL CARE
+
+Travel primarily for and essential to medical care is deductible:
+- Actual vehicle expenses, or
+- Standard mileage rate: 67 cents per mile (2024)
+- Plus parking fees and tolls
+- Bus, taxi, train, or plane fares
+- Ambulance service
+
+Lodging while away from home for medical treatment:
+- Up to $50 per night per person
+- Must be primarily for medical care
+- No significant element of personal pleasure
+
+NON-DEDUCTIBLE EXPENSES
+
+- Cosmetic surgery (unless medically necessary)
+- Health club or gym memberships
+- Vitamins and supplements (unless prescribed)
+- Teeth whitening
+- Non-prescription medicines (except insulin)
+- Funeral expenses
+- Life insurance premiums
+- Expenses paid by insurance
+
+HEALTH SAVINGS ACCOUNTS (HSA)
+
+HSA contributions are tax-deductible, and distributions for qualified medical expenses are tax-free.
+
+2024 Contribution Limits:
+- Self-only coverage: $4,150
+- Family coverage: $8,300
+- Catch-up contribution (age 55+): Additional $1,000
+
+Requirements:
+- Must be enrolled in a high-deductible health plan (HDHP)
+- Cannot be enrolled in Medicare
+- Cannot be claimed as a dependent
+
+FLEXIBLE SPENDING ACCOUNTS (FSA)
+
+2024 Contribution Limit: $3,200 per employer plan
+
+Key Features:
+- Pre-tax contributions reduce taxable income
+- Use-it-or-lose-it rule (with limited rollover or grace period options)
+- Can be used for medical, dental, and vision expenses
+- Dependent care FSA is separate ($5,000 limit)
+
+SELF-EMPLOYED HEALTH INSURANCE DEDUCTION
+
+Self-employed individuals can deduct 100% of health insurance premiums paid for themselves, spouse, and dependents as an adjustment to income on Schedule 1 (not as itemized deduction).
+
+Requirements:
+- Must have net self-employment income
+- Cannot be eligible for employer-subsidized health plan
+- Deduction limited to net self-employment earnings

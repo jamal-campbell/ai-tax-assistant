@@ -1,0 +1,82 @@
+IRS Publication 525 - Taxable and Nontaxable Income: Gambling
+
+GAMBLING WINNINGS
+
+All gambling winnings are fully taxable and must be reported on your tax return. This includes winnings from:
+- Casinos and card rooms
+- Lotteries and raffles
+- Horse racing and dog racing
+- Sports betting
+- Bingo and slot machines
+- Online gambling
+- Fantasy sports
+
+REPORTING REQUIREMENTS
+
+Form W-2G is issued for certain gambling winnings:
+- $1,200 or more from bingo or slot machines
+- $1,500 or more from keno (reduced by wager)
+- $5,000 or more from poker tournaments (reduced by buy-in)
+- $600 or more if at least 300 times the wager (other gambling)
+
+Even if you don't receive a W-2G, you must report all gambling winnings as "Other Income" on Schedule 1 of Form 1040.
+
+GAMBLING LOSSES
+
+You may deduct gambling losses, but only to the extent of gambling winnings. You cannot deduct losses that exceed your winnings.
+
+Key Rules:
+- Losses are claimed as an itemized deduction on Schedule A
+- You must itemize deductions to claim gambling losses
+- Cannot use standard deduction and claim gambling losses
+- Losses from one type of gambling can offset winnings from another
+
+Professional Gamblers:
+If gambling is your trade or business, report winnings and losses on Schedule C. Professional gamblers can deduct losses up to winnings and may also deduct business expenses (travel, subscriptions, etc.).
+
+RECORDKEEPING REQUIREMENTS
+
+The IRS requires contemporaneous records of gambling activities:
+
+Required Documentation:
+- Date and type of gambling activity
+- Name and address of gambling establishment
+- Names of other persons present
+- Amount won or lost
+
+Supporting Documents:
+- W-2G forms received
+- Wagering tickets and receipts
+- Credit card records
+- Bank withdrawal slips
+- Casino player club statements
+- Canceled checks
+
+Diary or Log:
+Keep a diary or log showing:
+- Each gambling session date
+- Type of gambling
+- Starting and ending times
+- Amounts won and lost per session
+- Running totals
+
+WITHHOLDING
+
+Federal income tax is withheld from certain gambling winnings:
+- 24% withholding on winnings over $5,000 (reduced by wager) from:
+  - Lotteries
+  - Sweepstakes
+  - Wagering pools
+  - Poker tournaments
+
+- 24% backup withholding if you don't provide a valid taxpayer ID
+
+State taxes may also be withheld depending on your state's requirements.
+
+NONRESIDENT ALIENS
+
+Gambling winnings of nonresident aliens from U.S. sources are subject to 30% withholding (or lower treaty rate). Gambling losses cannot be used to offset winnings unless the individual is engaged in a U.S. trade or business.
+
+TAX TREATY BENEFITS
+
+Some tax treaties allow residents of certain countries to reduce or eliminate U.S. tax on gambling winnings. Review the applicable treaty for specific provisions.

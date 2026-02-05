@@ -1,0 +1,96 @@
+IRS Publication 587 - Business Use of Your Home
+
+HOME OFFICE DEDUCTION
+
+If you use part of your home exclusively and regularly for business, you may be able to deduct expenses related to the business use of your home.
+
+QUALIFYING FOR THE DEDUCTION
+
+Requirements:
+1. Regular and exclusive use - The space must be used regularly and exclusively for business
+2. Principal place of business - Your home office must be your principal place of business, OR
+3. Meeting clients - You regularly meet clients, customers, or patients at your home, OR
+4. Separate structure - The space is a separate structure used for business
+
+Exclusive Use Exceptions:
+- Daycare facilities
+- Storage of inventory or product samples
+
+EMPLOYEES vs. SELF-EMPLOYED
+
+Self-Employed: Can deduct home office expenses on Schedule C
+Employees: As of 2018, employees can no longer deduct unreimbursed home office expenses (Tax Cuts and Jobs Act eliminated this deduction through 2025)
+
+CALCULATING THE DEDUCTION
+
+Two Methods:
+
+1. SIMPLIFIED METHOD
+- $5 per square foot of home office space
+- Maximum 300 square feet
+- Maximum deduction: $1,500 per year
+- No depreciation deduction or recapture
+
+2. REGULAR METHOD
+Calculate actual expenses based on percentage of home used for business.
+
+Business Percentage = Office Square Footage ÷ Total Home Square Footage
+
+Direct Expenses (100% deductible):
+- Painting or repairs to office only
+- Dedicated business phone line
+
+Indirect Expenses (deductible based on business percentage):
+- Mortgage interest or rent
+- Real estate taxes
+- Homeowner's insurance
+- Utilities (electricity, gas, water)
+- Home repairs and maintenance
+- Depreciation of home
+- Security system
+- HOA fees
+
+DEPRECIATION
+
+Using the regular method, you can depreciate the business portion of your home over 39 years (nonresidential property).
+
+Important: When you sell your home, you may need to recapture depreciation taken (taxed at 25% rate).
+
+DEDUCTION LIMITS
+
+The home office deduction cannot exceed your gross income from the business use of your home, minus:
+- Business expenses not related to home use
+- Mortgage interest and real estate taxes (deductible regardless of business use)
+
+Excess deduction can be carried forward to future years.
+
+DAYCARE FACILITY EXCEPTION
+
+If you use part of your home regularly (but not exclusively) for daycare, you can calculate the deduction based on:
+- Percentage of home used for daycare
+- Percentage of time used for daycare
+
+Example:
+- 40% of home used for daycare
+- Daycare operates 12 hours/day, 250 days/year
+- Time percentage: (12 × 250) ÷ 8,760 = 34.2%
+- Business percentage: 40% × 34.2% = 13.7%
+
+RECORDS TO KEEP
+
+Maintain documentation including:
+- Floor plan showing office area
+- Total square footage of home
+- Receipts for home expenses
+- Time log (if daycare)
+- Evidence of business use
+
+FORM 8829
+
+Use Form 8829 to calculate the home office deduction when using the regular method. Report the deduction on Schedule C, Line 30.
+
+IMPACT ON HOME SALE EXCLUSION
+
+If you use the simplified method or don't claim depreciation, the full $250,000/$500,000 home sale exclusion generally remains available.
+
+If you claimed depreciation, you must recapture it as ordinary income (up to 25% tax rate) when selling the home, but the remaining gain may still qualify for the exclusion.

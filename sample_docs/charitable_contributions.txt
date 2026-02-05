@@ -1,0 +1,55 @@
+IRS Publication 526 - Charitable Contributions
+
+CHARITABLE CONTRIBUTION LIMITS
+
+For tax year 2024, you can generally deduct charitable contributions up to 60% of your adjusted gross income (AGI). However, different limits apply depending on the type of property donated and the type of organization receiving the donation.
+
+CASH CONTRIBUTIONS
+- 60% AGI limit for cash contributions to public charities
+- 30% AGI limit for cash contributions to private foundations
+- Contributions exceeding these limits can be carried forward for up to 5 years
+
+PROPERTY CONTRIBUTIONS
+- 30% AGI limit for appreciated capital gain property to public charities
+- 20% AGI limit for appreciated property to private foundations
+- Fair market value is generally used for property held more than one year
+
+QUALIFIED CHARITABLE DISTRIBUTIONS (QCDs)
+Individuals age 70½ or older can make qualified charitable distributions of up to $100,000 per year directly from their IRA to a qualified charity. QCDs count toward your required minimum distribution (RMD) but are not included in taxable income.
+
+SUBSTANTIATION REQUIREMENTS
+
+Cash Contributions:
+- Under $250: Bank record, receipt, or written communication from charity
+- $250 or more: Written acknowledgment from the charity showing date, amount, and whether goods/services were provided
+
+Non-Cash Contributions:
+- Under $250: Receipt from charity with description
+- $250 to $500: Written acknowledgment from charity
+- Over $500: Form 8283 required
+- Over $5,000: Qualified appraisal required (with exceptions for publicly traded securities)
+
+QUALIFIED ORGANIZATIONS
+Contributions are deductible only if made to qualified organizations including:
+- Churches and religious organizations
+- Nonprofit educational organizations
+- Nonprofit hospitals and medical research organizations
+- Public charities described in section 501(c)(3)
+- Federal, state, and local governments (for public purposes)
+
+NON-DEDUCTIBLE CONTRIBUTIONS
+You cannot deduct contributions to:
+- Individuals
+- Political organizations or candidates
+- Social clubs, labor unions, or chambers of commerce
+- Foreign organizations (with limited exceptions)
+- Organizations operated for personal profit
+
+VOLUNTEER EXPENSES
+You may deduct unreimbursed out-of-pocket expenses when serving as a volunteer:
+- Travel expenses (actual costs or 14 cents per mile for 2024)
+- Cost of uniforms required by the organization
+- Supplies purchased for the organization's use
+
+SPECIAL RULES FOR CLOTHING AND HOUSEHOLD ITEMS
+Donated clothing and household items must be in good used condition or better to be deductible. Items with minimal value are not deductible. A single item valued over $500 requires a qualified appraisal.
