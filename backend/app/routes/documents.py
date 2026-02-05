@@ -3,7 +3,8 @@ import os
 import shutil
 import logging
 from fastapi import APIRouter, HTTPException, UploadFile, File
-from ..models.schemas import DocumentList, DocumentInfo, UploadResponse, IngestResponse
+from ..models.schemas import DocumentList, DocumentInfo, UploadResponse, IngestResponse, DocumentContent, DocumentChunk
+from ..services.vector_store import get_vector_store
 from ..services.document_processor import get_document_processor
 from ..config import get_settings
 
@@ -81,6 +82,31 @@ async def ingest_irs_documents():
     except Exception as e:
         logger.error(f"Ingestion failed: {e}")
         raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.get("/{doc_id}", response_model=DocumentContent)
+async def get_document_content(doc_id: str):
+    """Get the full content of a document."""
+    processor = get_document_processor()
+    vector_store = get_vector_store()
+
+    # Check if document exists
+    documents = processor.get_documents()
+    doc_info = next((d for d in documents if d["id"] == doc_id), None)
+
+    if not doc_info:
+        raise HTTPException(status_code=404, detail="Document not found")
+
+    # Get all chunks for this document
+    chunks = vector_store.get_document_chunks(doc_id)
+
+    return DocumentContent(
+        id=doc_id,
+        filename=doc_info["filename"],
+        source_type=doc_info["source_type"],
+        chunks=[DocumentChunk(**{k: v for k, v in c.items() if k != "source"}) for c in chunks],
+        total_chunks=len(chunks)
+    )
 
 
 @router.delete("/{doc_id}")

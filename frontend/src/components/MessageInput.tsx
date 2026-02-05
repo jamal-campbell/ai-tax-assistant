@@ -1,14 +1,16 @@
-import { useState, KeyboardEvent } from 'react';
-import { Send, Loader2 } from 'lucide-react';
+import { useState, KeyboardEvent, ChangeEvent, useRef } from 'react';
+import { Send, Loader2, Paperclip } from 'lucide-react';
 
 interface MessageInputProps {
   onSend: (message: string) => void;
   isLoading: boolean;
   disabled?: boolean;
+  onFileSelect?: (e: ChangeEvent<HTMLInputElement>) => Promise<void>;
 }
 
-export function MessageInput({ onSend, isLoading, disabled }: MessageInputProps) {
+export function MessageInput({ onSend, isLoading, disabled, onFileSelect }: MessageInputProps) {
   const [input, setInput] = useState('');
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleSend = () => {
     if (input.trim() && !isLoading && !disabled) {
@@ -24,9 +26,36 @@ export function MessageInput({ onSend, isLoading, disabled }: MessageInputProps)
     }
   };
 
+  const handleUploadClick = () => {
+    fileInputRef.current?.click();
+  };
+
   return (
     <div className="border-t border-gray-200 dark:border-gray-700 p-4 bg-white dark:bg-gray-800">
       <div className="flex items-end gap-3 max-w-4xl mx-auto">
+        {onFileSelect && (
+          <>
+            <button
+              onClick={handleUploadClick}
+              disabled={isLoading || disabled}
+              className="flex-shrink-0 p-3 rounded-lg border border-gray-300 dark:border-gray-600
+                       hover:bg-gray-100 dark:hover:bg-gray-700
+                       focus:outline-none focus:ring-2 focus:ring-primary-500
+                       disabled:opacity-50 disabled:cursor-not-allowed
+                       transition-colors"
+              title="Upload PDF"
+            >
+              <Paperclip className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+            </button>
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept=".pdf"
+              onChange={onFileSelect}
+              className="hidden"
+            />
+          </>
+        )}
         <textarea
           value={input}
           onChange={(e) => setInput(e.target.value)}

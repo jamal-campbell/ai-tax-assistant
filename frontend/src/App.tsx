@@ -1,8 +1,16 @@
 import { useState, useEffect } from 'react';
 import { Sidebar } from './components/Sidebar';
 import { ChatInterface } from './components/ChatInterface';
+import { DocumentViewer } from './components/DocumentViewer';
 import { useChat } from './hooks/useChat';
 import { useDocuments } from './hooks/useDocuments';
+import type { Source } from './types';
+
+interface ViewerState {
+  documentId: string;
+  documentName: string;
+  highlightChunkIndex?: number;
+}
 
 function App() {
   const [isDark, setIsDark] = useState(() => {
@@ -11,6 +19,8 @@ function App() {
     }
     return false;
   });
+
+  const [viewerState, setViewerState] = useState<ViewerState | null>(null);
 
   const {
     messages,
@@ -48,6 +58,29 @@ function App() {
     await remove(docId);
   };
 
+  const handleDocumentClick = (docId: string, docName: string) => {
+    setViewerState({
+      documentId: docId,
+      documentName: docName,
+    });
+  };
+
+  const handleSourceClick = (source: Source) => {
+    // Find the document that matches this source
+    const doc = documents.find(d => d.filename === source.source);
+    if (doc) {
+      setViewerState({
+        documentId: doc.id,
+        documentName: doc.filename,
+        highlightChunkIndex: source.chunk_index,
+      });
+    }
+  };
+
+  const handleCloseViewer = () => {
+    setViewerState(null);
+  };
+
   return (
     <div className="h-screen flex bg-gray-100 dark:bg-gray-900">
       <Sidebar
@@ -59,6 +92,7 @@ function App() {
         onUpload={handleUpload}
         onDelete={handleDelete}
         onClearChat={clearChat}
+        onDocumentClick={handleDocumentClick}
       />
       <ChatInterface
         messages={messages}
@@ -66,7 +100,19 @@ function App() {
         error={chatError || docError}
         hasDocuments={documents.length > 0}
         onSendMessage={sendMessage}
+        onSourceClick={handleSourceClick}
+        onUpload={handleUpload}
+        isUploading={isUploading}
       />
+
+      {viewerState && (
+        <DocumentViewer
+          documentId={viewerState.documentId}
+          documentName={viewerState.documentName}
+          highlightChunkIndex={viewerState.highlightChunkIndex}
+          onClose={handleCloseViewer}
+        />
+      )}
     </div>
   );
 }

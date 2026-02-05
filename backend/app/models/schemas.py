@@ -72,6 +72,22 @@ class IngestResponse(BaseModel):
     total_chunks: int
 
 
+class DocumentChunk(BaseModel):
+    """A chunk of document content."""
+    text: str
+    page: Optional[int] = None
+    chunk_index: int
+
+
+class DocumentContent(BaseModel):
+    """Full content of a document."""
+    id: str
+    filename: str
+    source_type: str
+    chunks: list[DocumentChunk]
+    total_chunks: int
+
+
 # Health schemas
 class HealthResponse(BaseModel):
     """Health check response."""

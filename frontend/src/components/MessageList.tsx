@@ -1,14 +1,15 @@
 import { useRef, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { User, Bot, Loader2, FileText, Sparkles, Shield, Zap } from 'lucide-react';
-import type { Message } from '../types';
+import type { Message, Source } from '../types';
 import { SourcesList } from './SourceCard';
 
 interface MessageBubbleProps {
   message: Message;
+  onSourceClick?: (source: Source) => void;
 }
 
-function MessageBubble({ message }: MessageBubbleProps) {
+function MessageBubble({ message, onSourceClick }: MessageBubbleProps) {
   const isUser = message.role === 'user';
 
   return (
@@ -48,7 +49,7 @@ function MessageBubble({ message }: MessageBubbleProps) {
         </div>
 
         {!isUser && message.sources && message.sources.length > 0 && !message.isStreaming && (
-          <SourcesList sources={message.sources} />
+          <SourcesList sources={message.sources} onSourceClick={onSourceClick} />
         )}
       </div>
     </div>
@@ -141,9 +142,10 @@ interface MessageListProps {
   messages: Message[];
   isLoading: boolean;
   onSendMessage?: (message: string) => void;
+  onSourceClick?: (source: Source) => void;
 }
 
-export function MessageList({ messages, isLoading, onSendMessage }: MessageListProps) {
+export function MessageList({ messages, isLoading, onSendMessage, onSourceClick }: MessageListProps) {
   const bottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -169,7 +171,7 @@ export function MessageList({ messages, isLoading, onSendMessage }: MessageListP
     <div className="flex-1 overflow-y-auto p-4 space-y-6">
       <div className="max-w-4xl mx-auto space-y-6">
         {messages.map((message) => (
-          <MessageBubble key={message.id} message={message} />
+          <MessageBubble key={message.id} message={message} onSourceClick={onSourceClick} />
         ))}
         <div ref={bottomRef} />
       </div>

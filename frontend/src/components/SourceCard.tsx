@@ -1,16 +1,22 @@
 import { useState } from 'react';
-import { FileText, ChevronDown, ChevronUp } from 'lucide-react';
+import { FileText, ChevronDown, ChevronUp, ExternalLink } from 'lucide-react';
 import type { Source } from '../types';
 
 interface SourceCardProps {
   source: Source;
   index: number;
+  onSourceClick?: (source: Source) => void;
 }
 
-export function SourceCard({ source, index }: SourceCardProps) {
+export function SourceCard({ source, index, onSourceClick }: SourceCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const scorePercent = Math.round(source.score * 100);
+
+  const handleViewDocument = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    onSourceClick?.(source);
+  };
 
   return (
     <div className="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
@@ -33,17 +39,38 @@ export function SourceCard({ source, index }: SourceCardProps) {
             </p>
           </div>
         </div>
-        {isExpanded ? (
-          <ChevronUp className="w-5 h-5 text-gray-400" />
-        ) : (
-          <ChevronDown className="w-5 h-5 text-gray-400" />
-        )}
+        <div className="flex items-center gap-2">
+          {onSourceClick && (
+            <button
+              onClick={handleViewDocument}
+              className="p-1.5 hover:bg-primary-100 dark:hover:bg-primary-900/30 rounded-lg transition-colors"
+              title="View in document"
+            >
+              <ExternalLink className="w-4 h-4 text-primary-600 dark:text-primary-400" />
+            </button>
+          )}
+          {isExpanded ? (
+            <ChevronUp className="w-5 h-5 text-gray-400" />
+          ) : (
+            <ChevronDown className="w-5 h-5 text-gray-400" />
+          )}
+        </div>
       </button>
       {isExpanded && (
         <div className="p-3 pt-0 border-t border-gray-200 dark:border-gray-700">
           <p className="text-sm text-gray-700 dark:text-gray-300 whitespace-pre-wrap">
             {source.text}
           </p>
+          {onSourceClick && (
+            <button
+              onClick={handleViewDocument}
+              className="mt-3 flex items-center gap-1.5 text-sm text-primary-600 dark:text-primary-400
+                       hover:text-primary-700 dark:hover:text-primary-300 font-medium"
+            >
+              <ExternalLink className="w-4 h-4" />
+              View in document
+            </button>
+          )}
         </div>
       )}
     </div>
@@ -52,9 +79,10 @@ export function SourceCard({ source, index }: SourceCardProps) {
 
 interface SourcesListProps {
   sources: Source[];
+  onSourceClick?: (source: Source) => void;
 }
 
-export function SourcesList({ sources }: SourcesListProps) {
+export function SourcesList({ sources, onSourceClick }: SourcesListProps) {
   if (!sources.length) return null;
 
   return (
@@ -65,7 +93,12 @@ export function SourcesList({ sources }: SourcesListProps) {
       </h4>
       <div className="space-y-2">
         {sources.map((source, i) => (
-          <SourceCard key={`${source.source}-${i}`} source={source} index={i} />
+          <SourceCard
+            key={`${source.source}-${i}`}
+            source={source}
+            index={i}
+            onSourceClick={onSourceClick}
+          />
         ))}
       </div>
     </div>

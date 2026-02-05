@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import type { Message, Source, StreamEvent } from '../types';
+import type { Message, Source } from '../types';
 import { streamMessage, clearChatHistory } from '../services/api';
 
 export function useChat() {

@@ -15,6 +15,7 @@ interface SidebarProps {
   onUpload: (file: File) => Promise<void>;
   onDelete: (docId: string) => Promise<void>;
   onClearChat: () => void;
+  onDocumentClick: (docId: string, docName: string) => void;
 }
 
 export function Sidebar({
@@ -26,6 +27,7 @@ export function Sidebar({
   onUpload,
   onDelete,
   onClearChat,
+  onDocumentClick,
 }: SidebarProps) {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [showUpload, setShowUpload] = useState(false);
@@ -200,7 +202,9 @@ export function Sidebar({
                 key={doc.id}
                 className="flex items-center justify-between p-2.5 bg-white dark:bg-gray-700
                            rounded-lg border border-gray-200 dark:border-gray-600
-                           hover:border-gray-300 dark:hover:border-gray-500 transition-colors"
+                           hover:border-primary-400 dark:hover:border-primary-500
+                           hover:shadow-sm cursor-pointer transition-all"
+                onClick={() => onDocumentClick(doc.id, doc.filename)}
               >
                 <div className="flex items-center gap-2.5 min-w-0">
                   <div className={`p-1.5 rounded ${
@@ -219,13 +223,13 @@ export function Sidebar({
                       {doc.filename}
                     </p>
                     <p className="text-xs text-gray-500 dark:text-gray-400">
-                      {doc.chunk_count} chunks
+                      {doc.chunk_count} chunks · Click to view
                     </p>
                   </div>
                 </div>
                 {doc.source_type === 'user' && (
                   <button
-                    onClick={() => onDelete(doc.id)}
+                    onClick={(e) => { e.stopPropagation(); onDelete(doc.id); }}
                     className="p-1.5 hover:bg-gray-100 dark:hover:bg-gray-600 rounded flex-shrink-0"
                     title="Delete document"
                   >
@@ -240,9 +244,17 @@ export function Sidebar({
 
       {/* Footer */}
       <div className="p-4 border-t border-gray-200 dark:border-gray-700 bg-gray-100/50 dark:bg-gray-800/50">
-        <p className="text-xs text-gray-500 dark:text-gray-400 text-center">
+        <p className="text-xs text-gray-500 dark:text-gray-400 text-center mb-2">
           Powered by Anthropic Claude & Qdrant
         </p>
+        <div className="flex items-center justify-center gap-1.5">
+          <span className="text-xs text-gray-400 dark:text-gray-500">Developed by</span>
+          <img
+            src="/assets/autorithm_White-Main.jpg"
+            alt="Autorithm"
+            className="h-4 rounded-sm"
+          />
+        </div>
       </div>
     </div>
   );

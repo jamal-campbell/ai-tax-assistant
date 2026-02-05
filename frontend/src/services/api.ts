@@ -1,4 +1,4 @@
-import type { ChatResponse, StreamEvent, Document, HealthStatus } from '../types';
+import type { ChatResponse, StreamEvent, Document, HealthStatus, DocumentContent } from '../types';
 
 const API_BASE = '/api';
 
@@ -102,6 +102,16 @@ export async function deleteDocument(docId: string): Promise<void> {
   if (!response.ok) {
     throw new Error('Failed to delete document');
   }
+}
+
+export async function getDocumentContent(docId: string): Promise<DocumentContent> {
+  const response = await fetch(`${API_BASE}/documents/${docId}`);
+
+  if (!response.ok) {
+    throw new Error('Failed to fetch document content');
+  }
+
+  return response.json();
 }
 
 export async function ingestDocuments(): Promise<{

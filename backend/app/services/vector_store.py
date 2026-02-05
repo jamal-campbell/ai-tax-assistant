@@ -28,6 +28,8 @@ class VectorStoreService:
         try:
             self.client.get_collection(self.collection_name)
             logger.info(f"Collection '{self.collection_name}' exists")
+            # Ensure index exists for doc_id field
+            self._ensure_payload_index()
             return True
         except UnexpectedResponse:
             logger.info(f"Creating collection '{self.collection_name}'")
@@ -38,7 +40,23 @@ class VectorStoreService:
                     distance=models.Distance.COSINE
                 )
             )
+            # Create index for doc_id field
+            self._ensure_payload_index()
             return True
+
+    def _ensure_payload_index(self) -> None:
+        """Ensure payload index exists for doc_id field."""
+        try:
+            self.client.create_payload_index(
+                collection_name=self.collection_name,
+                field_name="doc_id",
+                field_schema=models.PayloadSchemaType.KEYWORD
+            )
+            logger.info("Created payload index for doc_id")
+        except Exception as e:
+            # Index might already exist, which is fine
+            if "already exists" not in str(e).lower():
+                logger.debug(f"Payload index creation note: {e}")
 
     def add_documents(
         self,
@@ -142,6 +160,42 @@ class VectorStoreService:
         except Exception as e:
             logger.error(f"Failed to delete doc_id {doc_id}: {e}")
             return False
+
+    def get_document_chunks(self, doc_id: str) -> list[dict]:
+        """Get all chunks for a specific document."""
+        try:
+            results = self.client.scroll(
+                collection_name=self.collection_name,
+                scroll_filter=models.Filter(
+                    must=[
+                        models.FieldCondition(
+                            key="doc_id",
+                            match=models.MatchValue(value=doc_id)
+                        )
+                    ]
+                ),
+                limit=1000,
+                with_payload=True,
+                with_vectors=False
+            )
+
+            chunks = []
+            for point in results[0]:
+                payload = point.payload
+                chunks.append({
+                    "text": payload.get("text", ""),
+                    "page": payload.get("page"),
+                    "chunk_index": payload.get("chunk_index", 0),
+                    "source": payload.get("source", "")
+                })
+
+            # Sort by page and chunk_index
+            chunks.sort(key=lambda x: (x.get("page") or 0, x.get("chunk_index", 0)))
+            return chunks
+
+        except Exception as e:
+            logger.error(f"Failed to get document chunks: {e}")
+            return []
 
     def get_collection_stats(self) -> dict:
         """Get collection statistics."""

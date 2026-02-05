@@ -36,6 +36,20 @@ export interface Document {
   uploaded_at: string;
 }
 
+export interface DocumentChunk {
+  text: string;
+  page?: number;
+  chunk_index: number;
+}
+
+export interface DocumentContent {
+  id: string;
+  filename: string;
+  source_type: string;
+  chunks: DocumentChunk[];
+  total_chunks: number;
+}
+
 export interface HealthStatus {
   status: 'healthy' | 'degraded';
   services: {
