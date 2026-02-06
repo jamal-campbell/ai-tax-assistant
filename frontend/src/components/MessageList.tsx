@@ -62,10 +62,10 @@ interface WelcomeScreenProps {
 
 function WelcomeScreen({ onSendMessage }: WelcomeScreenProps) {
   const exampleQuestions = [
-    "What are the limits for charitable contributions?",
-    "How do I report scholarship income on my taxes?",
-    "What education expenses can I deduct?",
-    "Can I deduct gambling losses?",
+    "What is the medical expense deduction?",
+    "What education credits are available?",
+    "How are gambling winnings taxed?",
+    "What charitable contribution limits apply?",
   ];
 
   return (
@@ -128,8 +128,19 @@ function WelcomeScreen({ onSendMessage }: WelcomeScreenProps) {
           </div>
         </div>
 
+        {/* Tips */}
+        <div className="mt-6 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+          <p className="text-xs text-blue-700 dark:text-blue-400 font-medium mb-1">
+            Tips for best results:
+          </p>
+          <p className="text-xs text-blue-600 dark:text-blue-300">
+            Ask specific questions about tax topics like deductions, credits, or reporting requirements.
+            The assistant searches IRS publications to find relevant information.
+          </p>
+        </div>
+
         {/* Disclaimer */}
-        <p className="text-xs text-gray-400 dark:text-gray-500 mt-6">
+        <p className="text-xs text-gray-400 dark:text-gray-500 mt-4">
           This tool provides general information based on IRS publications.
           Always consult a qualified tax professional for specific tax advice.
         </p>

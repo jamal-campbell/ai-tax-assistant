@@ -33,10 +33,7 @@ function App() {
   const {
     documents,
     isLoading: isLoadingDocs,
-    isUploading,
     error: docError,
-    upload,
-    remove,
   } = useDocuments();
 
   // Apply dark mode class
@@ -49,14 +46,6 @@ function App() {
   }, [isDark]);
 
   const toggleDark = () => setIsDark(!isDark);
-
-  const handleUpload = async (file: File) => {
-    await upload(file);
-  };
-
-  const handleDelete = async (docId: string) => {
-    await remove(docId);
-  };
 
   const handleDocumentClick = (docId: string, docName: string) => {
     setViewerState({
@@ -86,11 +75,8 @@ function App() {
       <Sidebar
         documents={documents}
         isLoadingDocs={isLoadingDocs}
-        isUploading={isUploading}
         isDark={isDark}
         onToggleDark={toggleDark}
-        onUpload={handleUpload}
-        onDelete={handleDelete}
         onClearChat={clearChat}
         onDocumentClick={handleDocumentClick}
       />
@@ -101,8 +87,6 @@ function App() {
         hasDocuments={documents.length > 0}
         onSendMessage={sendMessage}
         onSourceClick={handleSourceClick}
-        onUpload={handleUpload}
-        isUploading={isUploading}
       />
 
       {viewerState && (
