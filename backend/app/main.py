@@ -5,7 +5,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from .routes import health, chat, documents
 from .services.document_processor import get_document_processor
-from .services.vector_store import get_vector_store
+from .config import get_settings
 
 # Configure logging
 logging.basicConfig(
@@ -53,9 +53,10 @@ app = FastAPI(
 )
 
 # Configure CORS for frontend
+settings = get_settings()
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://localhost:3000", "http://127.0.0.1:5173"],
+    allow_origins=settings.get_cors_origins(),
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

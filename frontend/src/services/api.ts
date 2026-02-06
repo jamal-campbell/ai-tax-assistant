@@ -1,6 +1,9 @@
 import type { ChatResponse, StreamEvent, Document, HealthStatus, DocumentContent } from '../types';
 
-const API_BASE = '/api';
+// Use environment variable for production, fallback to /api for local dev with proxy
+const API_BASE = import.meta.env.VITE_API_URL
+  ? `${import.meta.env.VITE_API_URL}/api`
+  : '/api';
 
 export async function sendMessage(
   query: string,

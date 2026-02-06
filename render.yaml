@@ -1,0 +1,50 @@
+# Render Blueprint - AI Tax Assistant
+# https://render.com/docs/blueprint-spec
+
+services:
+  # Backend API Service
+  - type: web
+    name: ai-tax-assistant-api
+    runtime: python
+    region: ohio
+    plan: free
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: cd backend && uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    envVars:
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: QDRANT_URL
+        sync: false
+      - key: QDRANT_API_KEY
+        sync: false
+      - key: REDIS_URL
+        sync: false
+      - key: CORS_ORIGINS
+        value: https://ai-tax-assistant.onrender.com
+      - key: PYTHON_VERSION
+        value: 3.11.0
+
+  # Frontend Static Site
+  - type: web
+    name: ai-tax-assistant
+    runtime: static
+    region: ohio
+    plan: free
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    rootDir: frontend
+    headers:
+      - path: /*
+        name: Cache-Control
+        value: public, max-age=0, must-revalidate
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          name: ai-tax-assistant-api
+          type: web
+          envVarKey: RENDER_EXTERNAL_URL
