@@ -1,0 +1,36 @@
+# Git
+.git
+.gitignore
+
+# Python
+__pycache__
+*.pyc
+*.pyo
+venv
+.venv
+*.egg-info
+
+# Node
+node_modules
+frontend/node_modules
+
+# IDE
+.vscode
+.idea
+
+# OS
+.DS_Store
+
+# Environment
+.env
+.env.local
+
+# Build artifacts
+frontend/dist
+
+# Docs
+*.md
+!README.md
+
+# Render config (not needed for Fly)
+render.yaml

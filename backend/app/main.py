@@ -1,8 +1,12 @@
 """Main FastAPI application."""
 import logging
+import os
+from pathlib import Path
 from contextlib import asynccontextmanager
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from .routes import health, chat, documents
 from .services.document_processor import get_document_processor
 from .config import get_settings
@@ -68,15 +72,36 @@ app.include_router(chat.router)
 app.include_router(documents.router)
 
 
-@app.get("/")
-async def root():
-    """Root endpoint with API info."""
-    return {
-        "name": "Tax RAG System",
-        "version": "2.0.0",
-        "docs": "/api/docs",
-        "health": "/api/health"
-    }
+# Serve static frontend in production
+STATIC_DIR = Path(__file__).parent.parent.parent.parent / "static"
+if STATIC_DIR.exists():
+    # Serve static assets
+    app.mount("/assets", StaticFiles(directory=STATIC_DIR / "assets"), name="assets")
+
+    @app.get("/{full_path:path}")
+    async def serve_frontend(request: Request, full_path: str):
+        """Serve frontend for all non-API routes."""
+        # Don't intercept API routes
+        if full_path.startswith("api"):
+            return {"detail": "Not found"}
+
+        # Try to serve the exact file
+        file_path = STATIC_DIR / full_path
+        if file_path.is_file():
+            return FileResponse(file_path)
+
+        # Fallback to index.html for SPA routing
+        return FileResponse(STATIC_DIR / "index.html")
+else:
+    @app.get("/")
+    async def root():
+        """Root endpoint with API info (dev mode)."""
+        return {
+            "name": "Tax RAG System",
+            "version": "2.0.0",
+            "docs": "/api/docs",
+            "health": "/api/health"
+        }
 
 
 if __name__ == "__main__":

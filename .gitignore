@@ -3,6 +3,7 @@
 venv/
 __pycache__/
 *.pyc
+*.swp
 
 # Node
 node_modules/
