@@ -73,7 +73,8 @@ app.include_router(documents.router)
 
 
 # Serve static frontend in production
-STATIC_DIR = Path(__file__).parent.parent.parent.parent / "static"
+# Path: /app/backend/app/main.py -> /app/static
+STATIC_DIR = Path(__file__).parent.parent.parent / "static"
 if STATIC_DIR.exists():
     # Serve static assets
     app.mount("/assets", StaticFiles(directory=STATIC_DIR / "assets"), name="assets")
