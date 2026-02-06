@@ -21,3 +21,6 @@ dist/
 # Uploads
 uploads/*
 !uploads/.gitkeep
+
+# Brand assets (keep private, inject at deployment)
+frontend/public/assets/
