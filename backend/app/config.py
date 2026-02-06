@@ -9,13 +9,14 @@ class Settings(BaseSettings):
 
     # API Keys
     anthropic_api_key: str
+    openai_api_key: str
     qdrant_url: str
     qdrant_api_key: str | None = None
     redis_url: str
 
     # Application settings
     collection_name: str = "tax_documents"
-    embedding_model: str = "all-MiniLM-L6-v2"
+    embedding_model: str = "text-embedding-3-small"
     llm_model: str = "claude-sonnet-4-20250514"
 
     # CORS - comma-separated list of allowed origins
