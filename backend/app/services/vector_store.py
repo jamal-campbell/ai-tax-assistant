@@ -24,19 +24,31 @@ class VectorStoreService:
         self.embedding_service = get_embedding_service()
 
     def ensure_collection(self) -> bool:
-        """Ensure the collection exists, create if not."""
+        """Ensure the collection exists with correct dimensions, create if not."""
+        expected_dim = self.embedding_service.get_dimension()
+
         try:
-            self.client.get_collection(self.collection_name)
-            logger.info(f"Collection '{self.collection_name}' exists")
-            # Ensure index exists for doc_id field
+            info = self.client.get_collection(self.collection_name)
+            current_dim = info.config.params.vectors.size
+
+            # Check if dimension matches
+            if current_dim != expected_dim:
+                logger.warning(
+                    f"Collection dimension mismatch: expected {expected_dim}, got {current_dim}. "
+                    f"Recreating collection..."
+                )
+                self.client.delete_collection(self.collection_name)
+                raise UnexpectedResponse  # Trigger recreation
+
+            logger.info(f"Collection '{self.collection_name}' exists with correct dimensions")
             self._ensure_payload_index()
             return True
-        except UnexpectedResponse:
-            logger.info(f"Creating collection '{self.collection_name}'")
+        except (UnexpectedResponse, AttributeError):
+            logger.info(f"Creating collection '{self.collection_name}' with dimension {expected_dim}")
             self.client.create_collection(
                 collection_name=self.collection_name,
                 vectors_config=models.VectorParams(
-                    size=self.embedding_service.get_dimension(),
+                    size=expected_dim,
                     distance=models.Distance.COSINE
                 )
             )
@@ -120,9 +132,10 @@ class VectorStoreService:
 
         query_embedding = self.embedding_service.embed(query)
 
-        results = self.client.search(
+        # Use query_points (new API in qdrant-client 1.7.0+)
+        results = self.client.query_points(
             collection_name=self.collection_name,
-            query_vector=query_embedding,
+            query=query_embedding,
             limit=limit,
             score_threshold=score_threshold,
             with_payload=True
@@ -136,7 +149,7 @@ class VectorStoreService:
                 "page": r.payload.get("page"),
                 "score": r.score
             }
-            for r in results
+            for r in results.points
         ]
 
     def delete_by_doc_id(self, doc_id: str) -> bool:

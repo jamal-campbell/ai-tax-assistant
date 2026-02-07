@@ -9,6 +9,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from .routes import health, chat, documents
 from .services.document_processor import get_document_processor
+from .services.vector_store import get_vector_store
 from .config import get_settings
 
 # Configure logging
@@ -25,6 +26,11 @@ async def lifespan(app: FastAPI):
     # Startup: Auto-ingest IRS documents if no documents in Redis
     logger.info("Starting Tax RAG System...")
     try:
+        # Ensure vector collection exists with correct dimensions
+        # This will recreate the collection if embedding dimensions changed
+        vector_store = get_vector_store()
+        vector_store.ensure_collection()
+
         processor = get_document_processor()
 
         # Check if we have documents registered

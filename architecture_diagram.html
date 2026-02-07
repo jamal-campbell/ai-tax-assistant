@@ -169,12 +169,14 @@
         }
 
         /* Layer-specific colors */
+        .layer-hosting .layer-icon { background: linear-gradient(135deg, #8b5cf6, #6d28d9); }
         .layer-presentation .layer-icon { background: linear-gradient(135deg, #667eea, #764ba2); }
         .layer-api .layer-icon { background: linear-gradient(135deg, #f59e0b, #d97706); }
         .layer-ai .layer-icon { background: linear-gradient(135deg, #ec4899, #be185d); }
         .layer-rag .layer-icon { background: linear-gradient(135deg, #10b981, #059669); }
         .layer-data .layer-icon { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
 
+        .layer-hosting .component-logo { background: linear-gradient(135deg, #8b5cf6, #6d28d9); }
         .layer-presentation .component-logo { background: linear-gradient(135deg, #667eea, #764ba2); }
         .layer-api .component-logo { background: linear-gradient(135deg, #f59e0b, #d97706); }
         .layer-ai .component-logo { background: linear-gradient(135deg, #ec4899, #be185d); }
@@ -275,6 +277,58 @@
         </div>
 
         <div class="architecture">
+            <!-- Hosting/Infrastructure Layer -->
+            <div class="layer layer-hosting">
+                <div class="layer-header">
+                    <div class="layer-icon">☁️</div>
+                    <div>
+                        <div class="layer-title">Hosting / Infrastructure Layer</div>
+                        <div class="layer-subtitle">Cloud deployment with auto-scaling and edge distribution</div>
+                    </div>
+                </div>
+                <div class="components">
+                    <div class="component">
+                        <div class="component-current">
+                            <div class="component-logo">Fl</div>
+                            <div>
+                                <div class="component-name">Fly.io</div>
+                                <div class="component-role">Container Hosting</div>
+                            </div>
+                            <span class="badge-current">Current</span>
+                        </div>
+                        <div class="alternatives">
+                            <div class="alternatives-label">Swap Options <span class="swap-indicator">Easy</span></div>
+                            <div class="alt-list">
+                                <span class="alt-item">Render</span>
+                                <span class="alt-item">Railway</span>
+                                <span class="alt-item">AWS ECS</span>
+                                <span class="alt-item">Google Cloud Run</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="component">
+                        <div class="component-current">
+                            <div class="component-logo">Dk</div>
+                            <div>
+                                <div class="component-name">Docker</div>
+                                <div class="component-role">Containerization</div>
+                            </div>
+                            <span class="badge-current">Current</span>
+                        </div>
+                        <div class="alternatives">
+                            <div class="alternatives-label">Swap Options <span class="swap-indicator">Medium</span></div>
+                            <div class="alt-list">
+                                <span class="alt-item">Buildpacks</span>
+                                <span class="alt-item">Nix</span>
+                                <span class="alt-item">Native Deploy</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flow-arrow">↓</div>
+
             <!-- Presentation Layer -->
             <div class="layer layer-presentation">
                 <div class="layer-header">
@@ -410,20 +464,20 @@
                     </div>
                     <div class="component">
                         <div class="component-current">
-                            <div class="component-logo">ST</div>
+                            <div class="component-logo">OA</div>
                             <div>
-                                <div class="component-name">SentenceTransformer</div>
-                                <div class="component-role">Embeddings</div>
+                                <div class="component-name">OpenAI Embeddings</div>
+                                <div class="component-role">text-embedding-3-small</div>
                             </div>
                             <span class="badge-current">Current</span>
                         </div>
                         <div class="alternatives">
                             <div class="alternatives-label">Swap Options <span class="swap-indicator">Easy</span></div>
                             <div class="alt-list">
-                                <span class="alt-item">OpenAI Embeddings</span>
                                 <span class="alt-item">Cohere Embed</span>
                                 <span class="alt-item">Voyage AI</span>
                                 <span class="alt-item">BGE Models</span>
+                                <span class="alt-item">SentenceTransformer</span>
                             </div>
                         </div>
                     </div>
