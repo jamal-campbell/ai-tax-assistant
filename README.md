@@ -39,7 +39,7 @@ docker build -t tax-rag .
 docker run -p 8080:8080 tax-rag
 ```
 
-Open http://localhost:8080
+Open localhost in your browser
 
 ### Local Development
 
@@ -69,9 +69,9 @@ ANTHROPIC_API_KEY=sk-ant-...
 # or
 OPENAI_API_KEY=sk-...
 
-# Optional: External services
-QDRANT_URL=http://localhost:6333
-REDIS_URL=redis://localhost:6379
+# Optional: External services (if running separately)
+QDRANT_URL=<your-qdrant-url>
+REDIS_URL=<your-redis-url>
 ```
 
 ## Tech Stack
