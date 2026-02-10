@@ -7,6 +7,10 @@ RAG-powered tax research tool that answers questions using IRS documentation wit
 ![FastAPI](https://img.shields.io/badge/FastAPI-Backend-009688)
 ![Qdrant](https://img.shields.io/badge/Qdrant-Vector_DB-red)
 
+## Live Demo
+
+Try it now: [AI Tax Research Assistant](https://ai-tax-assistant.fly.dev/)
+
 ## Features
 
 - **Grounded Answers**: Responses cite specific IRS documents—no hallucinations from random internet sources
