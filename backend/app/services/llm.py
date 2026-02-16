@@ -114,17 +114,9 @@ Please provide a helpful, accurate response based on the context above. If citin
             raise
 
     def health_check(self) -> bool:
-        """Check if Anthropic API is accessible."""
+        """Check if Anthropic API is configured."""
         try:
-            # Simple test generation
-            message = self.client.messages.create(
-                model=self.model,
-                max_tokens=10,
-                messages=[
-                    {"role": "user", "content": "Say OK"}
-                ]
-            )
-            return bool(message.content[0].text)
+            return self.client is not None and self.client.api_key is not None
         except Exception:
             return False
 

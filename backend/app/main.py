@@ -1,6 +1,7 @@
 """Main FastAPI application."""
 import logging
 import os
+import threading
 from pathlib import Path
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, Request
@@ -8,8 +9,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from .routes import health, chat, documents
-from .services.document_processor import get_document_processor
-from .services.vector_store import get_vector_store
 from .config import get_settings
 
 # Configure logging
@@ -20,20 +19,17 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    """Startup and shutdown events."""
-    # Startup: Auto-ingest IRS documents if no documents in Redis
-    logger.info("Starting Tax RAG System...")
+def _sync_ingest():
+    """Run document ingestion synchronously in a background thread."""
     try:
-        # Ensure vector collection exists with correct dimensions
-        # This will recreate the collection if embedding dimensions changed
+        from .services.document_processor import get_document_processor
+        from .services.vector_store import get_vector_store
+
         vector_store = get_vector_store()
         vector_store.ensure_collection()
 
         processor = get_document_processor()
 
-        # Check if we have documents registered
         if not processor.has_documents():
             logger.info("No documents found in registry. Auto-ingesting sample tax documents...")
             result = processor.ingest_sample_documents()
@@ -46,6 +42,16 @@ async def lifespan(app: FastAPI):
         logger.warning(f"Auto-ingestion skipped: {e}")
         import traceback
         traceback.print_exc()
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Startup and shutdown events."""
+    logger.info("Starting Tax RAG System...")
+
+    # Run document ingestion in a background thread so the app can serve requests immediately
+    ingest_thread = threading.Thread(target=_sync_ingest, daemon=True)
+    ingest_thread.start()
 
     yield  # App runs here
 
