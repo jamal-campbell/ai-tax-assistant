@@ -174,11 +174,14 @@ export function Sidebar({
         </p>
         <div className="flex items-center justify-center gap-1.5">
           <span className="text-xs text-gray-400 dark:text-gray-500">Developed by</span>
-          <img
-            src="/assets/autorithm_White-Main.jpg"
-            alt="Autorithm"
-            className="h-4 rounded-sm"
-          />
+          <a
+            href="https://autorithm.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs font-semibold text-emerald-500 hover:text-emerald-400 transition-colors"
+          >
+            Autorithm
+          </a>
         </div>
       </div>
     </div>
