@@ -22,8 +22,11 @@ COPY sample_docs/ ./sample_docs/
 # Copy frontend build to static directory
 COPY --from=frontend-builder /app/frontend/dist ./static
 
-# Expose port
+# Expose port (Render uses PORT env var)
 EXPOSE 8080
 
-# Start server
-CMD ["uvicorn", "backend.app.main:app", "--host", "0.0.0.0", "--port", "8080"]
+# Default port for local development, Render overrides with PORT env var
+ENV PORT=8080
+
+# Start server using shell to expand PORT variable
+CMD sh -c "uvicorn backend.app.main:app --host 0.0.0.0 --port \$PORT"
