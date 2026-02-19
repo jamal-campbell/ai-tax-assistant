@@ -11,10 +11,20 @@ primary_region = 'iad'  # Virginia (US East)
   force_https = true
   auto_stop_machines = true
   auto_start_machines = true
-  min_machines_running = 0
+  min_machines_running = 1
   processes = ['app']
 
+[checks]
+  [checks.alive]
+    type = "http"
+    port = 8080
+    method = "GET"
+    path = "/api/ping"
+    interval = "30s"
+    timeout = "5s"
+    grace_period = "120s"
+
 [[vm]]
-  memory = '512mb'
+  memory = '1024mb'
   cpu_kind = 'shared'
   cpus = 1

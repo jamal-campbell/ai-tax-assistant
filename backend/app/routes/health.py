@@ -8,6 +8,12 @@ from ..services.llm import get_llm_service
 router = APIRouter(prefix="/api", tags=["Health"])
 
 
+@router.get("/ping")
+async def ping():
+    """Lightweight liveness check for Fly.io health checks."""
+    return {"status": "ok"}
+
+
 @router.get("/health", response_model=HealthResponse)
 async def health_check():
     """Check the health of all services."""
