@@ -178,9 +178,14 @@ export function Sidebar({
             href="https://autorithm.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs font-semibold text-emerald-500 hover:text-emerald-400 transition-colors"
+            className="flex items-center gap-1"
           >
-            Autorithm
+            <img
+              src="/assets/autorithm_White-Main.jpg"
+              alt="Autorithm"
+              className="h-4 rounded-sm"
+            />
+            <span className="text-gray-400 dark:text-gray-500 text-xs">&raquo;</span>
           </a>
         </div>
       </div>
