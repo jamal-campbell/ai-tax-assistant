@@ -9,7 +9,7 @@ RAG-powered tax research tool that answers questions using IRS documentation wit
 
 ## Live Demo
 
-Try it now: [AI Tax Research Assistant](https://ai-tax-assistant.fly.dev/)
+Try it now: [AI Tax Research Assistant](https://ai-tax-assistant.onrender.com)
 
 ## Features
 
