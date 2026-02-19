@@ -32,5 +32,5 @@ Adopting this technology isn't about replacing your staff; it is about changing 
 
 You don't need to overhaul your entire firm to see benefits. By starting with a focused tool that simply helps you navigate IRS documentation faster, you can level the playing field against larger firms that have had these resources for years. The technology is ready to help you work smarter, not harder—one research question at a time.
 
-**Try it yourself:** [AI Tax Assistant Demo](https://ai-tax-assistant.onrender.com)
+**Try it yourself:** [AI Tax Assistant Demo](https://ai-tax-assistant-y0yz.onrender.com)
 

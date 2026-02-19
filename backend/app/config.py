@@ -20,7 +20,7 @@ class Settings(BaseSettings):
     llm_model: str = "claude-sonnet-4-20250514"
 
     # CORS - comma-separated list of allowed origins
-    cors_origins: str = "http://localhost:5173,http://localhost:3000,http://127.0.0.1:5173,https://ai-tax-assistant.fly.dev,https://ai-tax-assistant.onrender.com"
+    cors_origins: str = "http://localhost:5173,http://localhost:3000,http://127.0.0.1:5173,https://ai-tax-assistant.fly.dev,https://ai-tax-assistant-y0yz.onrender.com"
 
     # Paths
     irs_docs_dir: str = os.path.join(os.path.dirname(__file__), "..", "..", "irs_docs")
